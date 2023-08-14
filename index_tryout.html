@@ -28,7 +28,6 @@ h3 {
 
   .plot-iframe {
     position: absolute;
-z-index:1;
 display:none
 left:0; 
 bottom:0; 
@@ -52,17 +51,7 @@ z-index:999999;
     cursor: pointer;
   }
 </style>
-<script>
-  function showPlot(plotNumber) {
-    var iframes = document.getElementsByClassName("plot-iframe");
-    for (var i = 0; i < iframes.length; i++) {
-      iframes[i].style.display = "none";
-    }
-    document.getElementById("plot" + plotNumber).style.display = "block";
-  }
-container.querySelector("#" + containerId + "_plot" + plotNumber).classList.add("show-plot");
 
-</script>
 </head>
 <body>
 
@@ -82,34 +71,9 @@ The following plots represent the hashtag usage over time. Since the
 
 <h3>Top 15</h3>
 
-<div  id="plotContainer3" class="center-text">
-  <div class="button-container">
-    <button class="button" onclick="showPlot(1)">Largest</button>
-    <button class="button" onclick="showPlot(2)">Peak</button>
-    <button class="button" onclick="showPlot(3)">Range</button>
-    <button class="button" onclick="showPlot(4)">Variance</button>
-  </div>
-  <iframe id="plot1" class="plot-iframe" src="hashtags/largest_15.html"></iframe>
-  <iframe id="plot2" class="plot-iframe" src="hashtags/normalized_peak_15_normalized_count.html"></iframe>
-  <iframe id="plot3" class="plot-iframe" src="hashtags/normalized_minmax_15_normalized_count.html"></iframe>
-  <iframe id="plot4" class="plot-iframe" src="hashtags/normalized_variance_15_normalized_count.html></iframe>
-</div>
 
 
 <h3>Top 50</h3>
-
-<div  id="plotContainer2" class="center-text">
-  <div class="button-container">
-    <button class="button" onclick="showPlot(1_2)">Largest</button>
-    <button class="button" onclick="showPlot(2_2)">Peak</button>
-    <button class="button" onclick="showPlot(3_2)">Range</button>
-    <button class="button" onclick="showPlot(4_2)">Variance</button>
-  </div>
-  <iframe id="plot1_2" class="plot-iframe" src="hashtags/largest_50.html"></iframe>
-  <iframe id="plot2_2" class="plot-iframe" src="hashtags/normalized_peak_50_normalized_count.html"></iframe>
-  <iframe id="plot3_2" class="plot-iframe" src="hashtags/normalized_minmax_50_normalized_count.html"></iframe>
-  <iframe id="plot4_2" class="plot-iframe" src="hashtags/normalized_variance_50_normalized_count.html></iframe>
-</div>
 
 
 <h2>Main trend analysis</h2>
