@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .center-text {
+    text-align: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .plot-container {
+    position: relative;
+    height: 80vh; /* Adjust the height as needed */
+  }
+
+  .plot-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+    z-index: 1;
+    display: none;
+  }
+
+  .show-plot {
+    display: block;
+  }
+
+  .button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+</style>
+<script>
+  function showPlot(containerId, plotNumber) {
+    var container = document.getElementById(containerId);
+    var iframes = container.querySelectorAll(".plot-iframe");
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].classList.remove("show-plot");
+    }
+    container.querySelector("#" + containerId + "_plot" + plotNumber).classList.add("show-plot");
+  }
+
+  // Show the first iframe inside each plot-container by default
+  var plotContainers = document.querySelectorAll(".plot-container");
+  for (var i = 0; i < plotContainers.length; i++) {
+    var firstIframe = plotContainers[i].querySelector(".plot-iframe");
+    firstIframe.classList.add("show-plot");
+  }
+</script>
+</head>
+<body>
+
+<!-- First set of plots -->
+<div id="plotContainer1" class="center-text">
+  <h1>Your Plots</h1>
+  <div class="button-container">
+    <button class="button" onclick="showPlot('plotContainer1', 1)">Peak</button>
+    <button class="button" onclick="showPlot('plotContainer1', 2)">Range</button>
+    <button class="button" onclick="showPlot('plotContainer1', 3)">Variance</button>
+    <button class="button" onclick="showPlot('plotContainer1', 4)">Largest</button>
+  </div>
+  <div class="plot-container">
+  <iframe id="plot1_2" class="plot-iframe" src="hashtags/largest_50.html"></iframe>
+  <iframe id="plot2_2" class="plot-iframe" src="hashtags/normalized_peak_50_normalized_count.html"></iframe>
+  <iframe id="plot3_2" class="plot-iframe" src="hashtags/normalized_minmax_50_normalized_count.html"></iframe>
+  <iframe id="plot4_2" class="plot-iframe" src="hashtags/normalized_variance_50_normalized_count.html></iframe>
+  </div>
+</div>
+
+<!-- Add more blocks for additional sets of plots -->
+<div id="plotContainer2" class="center-text">
+  <h1>Your Plots</h1>
+  <div class="button-container">
+    <button class="button" onclick="showPlot('plotContainer2', 1)">Peak</button>
+    <button class="button" onclick="showPlot('plotContainer2', 2)">Range</button>
+    <button class="button" onclick="showPlot('plotContainer2', 3)">Variance</button>
+    <button class="button" onclick="showPlot('plotContainer2', 4)">Largest</button>
+  </div>
+  <div class="plot-container">
+  <iframe id="plot1_2" class="plot-iframe" src="hashtags/largest_50.html"></iframe>
+  <iframe id="plot2_2" class="plot-iframe" src="hashtags/normalized_peak_50_normalized_count.html"></iframe>
+  <iframe id="plot3_2" class="plot-iframe" src="hashtags/normalized_minmax_50_normalized_count.html"></iframe>
+  <iframe id="plot4_2" class="plot-iframe" src="hashtags/normalized_variance_50_normalized_count.html></iframe>
+  </div>
+
+</div>
+</body>
+</html>

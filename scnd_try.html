@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Multiple Blocks with Iframes</title>
+<style>
+  .block {
+    position: relative;
+    height: 100vh; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    margin-bottom: 10px; /* Add spacing below buttons */
+  }
+  
+  .buttons button {
+    margin: 0 5px; /* Add margin for horizontal spacing */
+  }
+  
+  .iframe-container {
+    position: relative;
+    height: 100%; /* Adjust the height as needed */
+    width: 100%;
+  }
+  
+  .iframe {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    z-index: 999999;
+  }
+</style>
+<script>
+  function showIframe(blockNumber, iframeName) {
+    const iframeContainer = document.getElementById(`iframeContainer${blockNumber}`);
+    iframeContainer.innerHTML = `<iframe class="iframe" src="${iframeName}"></iframe>`;
+  }
+</script>
+</head>
+<body>
+
+<h2>Hashtag analysis</h2>
+The following plots represent the hashtag usage over time.
+
+<h3>Top 15</h3>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(1, 'hashtags/largest_15.html')">Most frequent hashtags</button>
+    <button onclick="showIframe(1, 'hashtags/normalized_peak_15_normalized_count.html')">Hashtags with highest peaks</button>
+    <button onclick="showIframe(1, 'hashtags/normalized_minmax_15_normalized_count.html')">Hashtags with largest range</button>
+    <button onclick="showIframe(1, 'hashtags/normalized_variance_15_normalized_count.html')">Hashtags with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer1">
+    <iframe class="iframe" src="hashtags/largest_15.html"></iframe>
+  </div>
+</div>
+
+
+<h3>Top 50</h3>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(2, 'hashtags/largest_50.html')">Most frequent hashtags</button>
+    <button onclick="showIframe(2, 'hashtags/normalized_peak_50_normalized_count.html')">Hashtags with highest peaks</button>
+    <button onclick="showIframe(2, 'hashtags/normalized_minmax_50_normalized_count.html')">Hashtags with largest range</button>
+    <button onclick="showIframe(2, 'hashtags/normalized_variance_50_normalized_count.html')">Hashtags with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer2">
+    <iframe class="iframe" src="hashtags/largest_50.html"></iframe>
+  </div>
+</div>
+
+
+<h2>Main trend analysis</h2>
+
+<h3>Final model using UMAP and HDBSCAN, with <i>min_cluster_size</i> set to 500</h3>
+<h4>Top 14</h4>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(3, 'UMAP_HDBSCAN_min500/largest_15_adapted.html')">Most frequent topics</button>
+    <button onclick="showIframe(3, 'UMAP_HDBSCAN_min500/normalized_peak_15_normalized_count.html')">Topics with highest peaks</button>
+    <button onclick="showIframe(3, 'UMAP_HDBSCAN_min500/normalized_minmax_15_normalized_count.html')">Topics with largest range</button>
+    <button onclick="showIframe(3, 'UMAP_HDBSCAN_min500/normalized_variance_15_normalized_count.html')">Topics with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer3">
+    <iframe class="iframe" src="UMAP_HDBSCAN_min500/largest_15_adapted.html"></iframe>
+  </div>
+</div>
+
+<h4>Top 50</h4>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(4, 'UMAP_HDBSCAN_min500/largest_50.html')">Most frequent hashtags</button>
+    <button onclick="showIframe(4, 'UMAP_HDBSCAN_min500/normalized_peak_50_normalized_count.html')">Hashtags with highest peaks</button>
+    <button onclick="showIframe(4, 'UMAP_HDBSCAN_min500/normalized_minmax_50_normalized_count.html')">Hashtags with largest range</button>
+    <button onclick="showIframe(4, 'UMAP_HDBSCAN_min500/normalized_variance_50_normalized_count.html')">Hashtags with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer4">
+    <iframe class="iframe" src="UMAP_HDBSCAN_min500/largest_50.html"></iframe>
+  </div>
+</div>
+
+
+
+
+<p><center> </center></p>
+
+<h3>Final model using UMAP and HDBSCAN, with <i>min_cluster_size</i> set to 1000</h3>
+
+<h4>Top 14</h4>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(5, 'UMAP_HDBSCAN_min1000/largest_15_adapted.html')">Most frequent topics</button>
+    <button onclick="showIframe(5, 'UMAP_HDBSCAN_min1000/normalized_peak_15_normalized_count.html')">Topics with highest peaks</button>
+    <button onclick="showIframe(5, 'UMAP_HDBSCAN_min1000/normalized_minmax_15_normalized_count.html')">Topics with largest range</button>
+    <button onclick="showIframe(5, 'UMAP_HDBSCAN_min1000/normalized_variance_15_normalized_count.html')">Topics with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer5">
+    <iframe class="iframe" src="UMAP_HDBSCAN_min1000/largest_15.html"></iframe>
+  </div>
+</div>
+
+<h4>Top 50</h4>
+<div class="block">
+  <div class="buttons">
+    <button onclick="showIframe(6, 'UMAP_HDBSCAN_min1000/largest_50_adapted.html')">Most frequent hashtags</button>
+    <button onclick="showIframe(6, 'UMAP_HDBSCAN_min1000/normalized_peak_50_normalized_count.html')">Hashtags with highest peaks</button>
+    <button onclick="showIframe(6, 'UMAP_HDBSCAN_min1000/normalized_minmax_50_normalized_count.html')">Hashtags with largest range</button>
+    <button onclick="showIframe(6, 'UMAP_HDBSCAN_min1000/normalized_variance_50_normalized_count.html')">Hashtags with highest variance</button>
+  </div>
+  <div class="iframe-container" id="iframeContainer6">
+    <iframe class="iframe" src="UMAP_HDBSCAN_min1000/largest_50_adapted.html"></iframe>
+  </div>
+</div>
+
+
+
+<h3>Final model using PCA and K-means clustering</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+<head>
+<style>
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: left;
+}
+  .center-text {
+    text-align: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .plot-container {
+    position: relative;
+    height: 80vh; /* Adjust the height as needed */
+  }
+
+  .plot-iframe {
+    position: absolute;
+z-index:1;
+display:none
+left:0; 
+bottom:0; 
+right:0; 
+width:100%; 
+height:100%; 
+border:none; 
+margin:0; 
+padding:0; 
+overflow:hidden; 
+z-index:999999;
+  }
+
+  .show-plot {
+    display: block; /* Show plot 1 by default */
+  }
+
+  .button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+</style>
+<script>
+  function showPlot(plotNumber) {
+    var iframes = document.getElementsByClassName("plot-iframe");
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].style.display = "none";
+    }
+    document.getElementById("plot" + plotNumber).style.display = "block";
+  }
+container.querySelector("#" + containerId + "_plot" + plotNumber).classList.add("show-plot");
+
+</script>
+</head>
+<body>
+
+
+
+
+
+<h1>Uncovering Twitter trends with BERTopic: <br>
+a case study on climate change conversations</h1>
+
+<p>This website is used for the presentation of the plots related to the master's thesis of Sophia Valadou. This research encompasses a trend analysis on Twitter using the BERTopic model on climate change-related tweets. Since the plots are often too crowded for visualization, we opted for interactive plots instead. By clicking the legend on each plot three times, all trend lines disappear. Then, the trend lines that one wishes to display can be selected by clicking them once. This way, the plots are not too crowded and only the desired trend lines are displayed. </p>
+
+<br>
+<h2>Hashtag analysis</h2>
+The following plots represent the hashtag usage over time. Since the 
+
+
+<h3>Top 15</h3>
+
+<div  id="plotContainer3" class="center-text">
+  <div class="button-container">
+    <button class="button" onclick="showPlot(1)">Largest</button>
+    <button class="button" onclick="showPlot(2)">Peak</button>
+    <button class="button" onclick="showPlot(3)">Range</button>
+    <button class="button" onclick="showPlot(4)">Variance</button>
+  </div>
+  <iframe id="plot1" class="plot-iframe" src="hashtags/largest_15.html"></iframe>
+  <iframe id="plot2" class="plot-iframe" src="hashtags/normalized_peak_15_normalized_count.html"></iframe>
+  <iframe id="plot3" class="plot-iframe" src="hashtags/normalized_minmax_15_normalized_count.html"></iframe>
+  <iframe id="plot4" class="plot-iframe" src="hashtags/normalized_variance_15_normalized_count.html></iframe>
+</div>
+
+
+<h3>Top 50</h3>
+
+<div  id="plotContainer2" class="center-text">
+  <div class="button-container">
+    <button class="button" onclick="showPlot(1_2)">Largest</button>
+    <button class="button" onclick="showPlot(2_2)">Peak</button>
+    <button class="button" onclick="showPlot(3_2)">Range</button>
+    <button class="button" onclick="showPlot(4_2)">Variance</button>
+  </div>
+  <iframe id="plot1_2" class="plot-iframe" src="hashtags/largest_50.html"></iframe>
+  <iframe id="plot2_2" class="plot-iframe" src="hashtags/normalized_peak_50_normalized_count.html"></iframe>
+  <iframe id="plot3_2" class="plot-iframe" src="hashtags/normalized_minmax_50_normalized_count.html"></iframe>
+  <iframe id="plot4_2" class="plot-iframe" src="hashtags/normalized_variance_50_normalized_count.html></iframe>
+</div>
+
+
+<h2>Main trend analysis</h2>
+
+<h3>Final model using UMAP and HDBSCAN, with <i>min_cluster_size</i> set to 500</h3>
+
+<p><center> </center></p>
+
+<h3>Final model using UMAP and HDBSCAN, with <i>min_cluster_size</i> set to 1000</h3>
+
+
+<h3>Final model using PCA and K-means clustering</h3>
+
+
+
+
+<p>bliebloebla</p>
+
+</body>
+</html>
+
+
