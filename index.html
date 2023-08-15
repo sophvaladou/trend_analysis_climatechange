@@ -3,6 +3,18 @@
 <head>
 <title>Multiple Blocks with Iframes</title>
 <style>
+      ol {
+        counter-reset: item;
+        
+      }
+      li {
+        display: block;
+      }
+
+li:before {
+        content: counters(item, ".") ".  ";
+        counter-increment: item;
+      }
 h1 {
   text-align: center;
 }
@@ -67,7 +79,37 @@ h3 {
 <h1>Uncovering Twitter trends with BERTopic: <br>
 a case study on climate change conversations</h1>
 
-<p>This website is used for the presentation of the plots related to the master's thesis of Sophia Valadou. This research encompasses a trend analysis on Twitter using the BERTopic model on climate change-related tweets. Since the plots are often too crowded for visualization, we opted for interactive plots instead. By clicking the legend on each plot three times, all trend lines disappear. Then, the trend lines that one wishes to display can be selected by clicking them once. This way, the plots are not too crowded and only the desired trend lines are displayed. </p>
+<p>This website is used for the presentation of the interactive plots from my master's thesis. This research encompasses a trend analysis on Twitter using the BERTopic model on climate change-related tweets. Since the plots are often too crowded for visualization, we opted for interactive plots instead. By clicking the legend on each plot three times, all trend lines disappear. Then, the trend lines that one wishes to display can be selected by clicking them once. This way, the plots are not too crowded and only the desired trend lines are displayed. </p>
+
+<br>
+This website is structured in the following way:
+<ol>
+	<li>First, the trending hashtags are displayed as explained in the chapter Data Understanding</li>
+	<li>Next, we present the trending topics according to the different topic models presented in the chapter Results 
+<ol>
+<li>First, the UMAP+HDBSCAN model with <i>min_cluster_size</i> equal to 500 is displayed</li>
+<li>Second, the UMAP+HDBSCAN model with <i>min_cluster_size</i> equal to 1000 is presented</li>
+<li>Third, the PCA+KMEANS model is demonstrated</li>
+</ol>
+</li>
+<li>Finally, the trending topics from the news articles are shown</li>
+</ol>
+<br>
+
+For all of these graphs, the top 15 and top 50 topics are presented on separate graphs, as well as an overview of all topics. For the hashtags, only the top 15 and top 50 hashtags are presented.
+
+<br>
+Every plot can be changed according to the way in which the top trending topics/hashtags were defined. Trending topics/hashtags were defined in four ways:
+<ol>
+  <li>First, we plotted the topics/hashtags with the highest overall frequency in the data.
+  <li>Second, we chose to determine which topics/hashtags had the highest occurrences in a single time period. This was done to really capture the peaks in the data, as these represent the biggest "trends" over time.</li>
+    <li>Third, we defined the 15 topics/hashtags with the widest range. This is the difference between the minimal number of occurrences and the maximum number of occurrences, both aggregated per timeframe. The reasoning behind this is that some topics/hashtags might have an overall high usage throughout time, without really rising or falling. Since a trend is generally defined as  ``a general development or change in a situation or in the way that people are behaving" (Cambridge Dictionary, n.d.), hashtags with an overall high frequency throughout time do not really conform with this definition. Taking the difference between the highest and lowest frequency over time highlights the element of ``change" in the trends.</li>
+    <li>Fourth, we calculated the variance of every topics/hashtag and picked the ones with the highest variance as the top topics/hashtags. The reasoning behind this is the same as for taking the topics with the highest range: variance captures the change over time of the topic's/hashtag's frequency.</li>
+</ol>
+
+
+<br>
+<p align = "right"> Sophia Valadou <br> 16 August 2023 </p>
 
 
 <h2>Hashtag analysis</h2>
@@ -131,8 +173,15 @@ The following plots represent the hashtag usage over time.
   </div>
 </div>
 
+<h4>All topics</h4>
+<div class="block">
+  <div class="iframe-container" id="iframeContainer10"> <!-- Assign a unique ID to the container -->
+    <iframe class="iframe" src="UMAP_HDBSCAN_min500/all_topics.html"></iframe>
+  </div>
+</div>
 
-<p><center> </center></p>
+
+
 
 <h3>Final model using UMAP and HDBSCAN, with <i>min_cluster_size</i> set to 1000</h3>
 
@@ -162,7 +211,12 @@ The following plots represent the hashtag usage over time.
   </div>
 </div>
 
-
+<h4>All topics</h4>
+<div class="block">
+  <div class="iframe-container" id="iframeContainer11"> <!-- Assign a unique ID to the container -->
+    <iframe class="iframe" src="UMAP_HDBSCAN_min1000/all_topics.html"></iframe>
+  </div>
+</div>
 
 <h3>Final model using PCA and K-means clustering</h3>
 
@@ -192,6 +246,13 @@ The following plots represent the hashtag usage over time.
   </div>
 </div>
 
+<h4>All topics</h4>
+<div class="block">
+  <div class="iframe-container" id="iframeContainer12"> <!-- Assign a unique ID to the container -->
+    <iframe class="iframe" src="PCA_KMEANS/all_topics.html"></iframe>
+  </div>
+</div>
+
 <h2>Topics from news articles</2>
 <h4>Top 15</h4>
 <div class="block">
@@ -206,7 +267,13 @@ The following plots represent the hashtag usage over time.
   </div>
 </div>
 
+<h4>All topics</h4>
 
+<div class="block">
+  <div class="iframe-container" id="iframeContainer13"> <!-- Assign a unique ID to the container -->
+    <iframe class="iframe" src="news_trends/all_topics.html"></iframe>
+  </div>
+</div>
 
 </body>
 </html>
